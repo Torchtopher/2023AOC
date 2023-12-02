@@ -58,6 +58,7 @@ ans = 0
 for i in s:
     # get all the numbers and the word after them
     spl = re.findall(r'\d+|[a-zA-Z]+', i)
+    print(spl)
     red = 0
     blue = 0
     green = 0

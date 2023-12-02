@@ -41,17 +41,42 @@ def submit(day, level, answer):
 
 AOC_COOKIE = '53616c7465645f5f0be3dfbce64c428b05c9004ca638590b3709abbd839084a2c730ff2e70fd906f64f728824e2423a8d9d7ff211f13e56c03f212edfc252b65'
 YEAR = '2023'
-DAY = 1
+DAY = 2
 PART = 1
 
 import itertools
+import re
 
 s = get_input(DAY).strip() # the daily input is stored in s
-s = get_example(DAY, offset=0).strip() # the daily example is stored in test
+#s = get_example(DAY, offset=1).strip() # the daily example is stored in test
 
 s = [x for x in s.split("\n")]
-print(s)
+T_RED = 12
+T_GREEN = 13
+T_BLUE = 14
+ans = 0
+for i in s:
+    # get all the numbers and the word after them
+    spl = re.findall(r'\d+|[a-zA-Z]+', i)
+    red = 0
+    blue = 0
+    green = 0
+    impossible = False
+    for idx, val in enumerate(spl):
+        if val.isnumeric():
+            if spl[idx+1] == 'red':
+                if int(val) > red:
+                    red = int(val)
+            elif spl[idx+1] == 'green':
+                if int(val) > green:
+                    green = int(val)
+            elif spl[idx+1] == 'blue':
+                if int(val) > blue:
+                    blue = int(val)  
+    ans += red * green * blue
 
-ans = 123
+print(ans)
 
+
+print(f'Answer for part {ans}')
 #submit(DAY, PART, ans)

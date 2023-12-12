@@ -75,7 +75,7 @@ print(cycle_lengths)
 #    44,810,373,917 wrong low
 #   537,724,487,004 wrong
 # 2,150,897,948,016 wrong
-#13,129,439,557,681
+#13,129,439,557,681 CORRECT
 # lcm of all cycle lengths, use numpy
 import numpy as np
 lcm = np.lcm.reduce(cycle_lengths)

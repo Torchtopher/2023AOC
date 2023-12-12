@@ -37,6 +37,7 @@ def is_valid(line, block, replacments):
 
 assert is_valid("???.###", [1,1,3], ["#", ".", "#"]) == True
 
+
 @functools.lru_cache(maxsize=None)
 def recursive_is_valid(LINE, BLOCKS, current_block_len, debug_string=""):
     #print(LINE, BLOCKS, current_block_len, debug_string)
@@ -100,12 +101,18 @@ assert recursive_is_valid("????.#...#...", (4,1,1), 0) == 1
 assert recursive_is_valid("????.######..#####.", (1,6,5), 0, "") == 4#, (recursive_is_valid("????.######..#####.", (1,6,5), 0, ""), recursive_is_valid.cache_info())
 #print(recursive_is_valid("????.######..#####.", (1,6,5), 0, ""))
 assert recursive_is_valid("?###????????", (3,2,1), 0) == 10
-print("HOLY SHIT TESTS PASSED")
+assert recursive_is_valid("??????????????", (1,1,1,5), 0) == 35
+#assert recursive_is_valid("?###????????", (3,2,1), 0) == 45, recursive_is_valid("?###????????", (3,2,1), 0)
+assert recursive_is_valid("????", (1,1), 0) == 3, "sad"
+assert recursive_is_valid("?????", (1,1), 0) == 3, recursive_is_valid("?????", (1,1), 0)
 
+
+print("HOLY SHIT TESTS PASSED")
+exit()
 ans = 0
 for l in data:
     line = l.split(" ")[0] + "?" + l.split(" ")[0] + "?" + l.split(" ")[0] + "?" + l.split(" ")[0] + "?" + l.split(" ")[0]
-    #line = l.split(" ")[0]
+    #line = l.split(" ")[0
     print(line)
     broken = (l.split(" ")[1] + ",") * 5
     broken = broken[:-1]
